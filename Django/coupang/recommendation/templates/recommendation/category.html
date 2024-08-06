@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block contents %}
+<form id="categoryForm" method="POST" action="{% url 'recommendation:category' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="카테고리 보기">
+</form>
+  
+{% endblock contents %}
+

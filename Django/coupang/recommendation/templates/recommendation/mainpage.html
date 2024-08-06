@@ -1,0 +1,72 @@
+{% extends "base2.html" %}
+{% block main %}
+{% load static %}
+
+<form id="recommend" method="POST" action="{% url 'recommendation:mainpage' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <header style="text-align: center;">
+        {% comment %} <img src="{% static 'image/smart shopping.gif' %}" alt="main image" width = "30%" height="350"> {% endcomment %}
+    </header>
+      
+      <section class="d-flex flex-wrap justify-content-around mt-2">
+        <div class="container mt-4 md-4" style="width: 810px;">
+          <div class="row">
+            <div class="col-12">
+              <h4 class="text-center"><strong>오늘도 쿠팡을 껐다 켜기를 반복하다 지친 당신을 위한 도우미, <span class="ingredient" style="color: #ac5034;">ZZINPANG</span>을 소개합니다.</strong></h4>
+              <div class="mt-5" style="text-align: center;">
+              <img src="{% static 'image/smart shopping.gif' %}" alt="main image" width = "45%" height="350">
+            </div>
+              <p class="mt-5 mb-5 text-center">
+                쿠팡의 수 많은 제품 중에서 정말로 원하는 제품을 구매하기란 쉽지 않죠. <br>설령 구매했더라도 만족하지 못 하고 후회하고... 반품과 환불을 종종 하기도 합니다.<br>여러분은 쇼핑하면서 제품을 구매하고 싶을 때 무엇을 기준으로 확신을 얻으십니까? <br> 별점인가요? 판매량인가요? 혹시 리뷰를 보고 제품을 구매해야겠다고 생각하신 적은 없나요? <br>리뷰가 구매에 도움이 되지만 리뷰를 전부 다 보기는 어렵다고요?<br>그런 여러분의 슬기로운 쿠팡생활을 도와줄 도우미 ZZINPANG을 소개합니다. 
+              </p>
+              <h5 class="text-center"><strong>이제, <span class="ingredient" style="color:#ac5034">ZZINPANG</span>과 함께 효율적인 쿠팡라이프를 즐겨보세요.</strong></h5>
+            </div>
+          </div>
+        </div>
+        
+        <div class="container mt-4">
+          <div class="row row-cols-xs-1 row-cols-md-2 row-cols-4 justify-content-center">
+            <article class="card my-3 mx-5 p-3 text-center" style="width: 18rem;">
+              <img src="https://www.freewordcloudgenerator.com/images/meta-image.png" class="card-img-top" alt="service2" height=170>
+              <div class="card-body">
+                <h5 class="card-title mb-3" style="font-weight: 550;">리뷰 데이터 현황 분석 <br>및 시각화</h5> 
+                <h6>카테고리 별로 리뷰에 쓰인 <br>단어들의 '트렌드', '랭킹' 등을 <br>시각화하여 보여드립니다</h6>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/category/" role="button" style="background-color: brown; border-color: brown;">서비스 바로가기</a>
+              </div>
+            </article>
+            <article class="card my-3 mx-5 p-3 text-center" style="width: 18rem;">
+              <img src="https://www.boannews.com/media/upFiles2/2023/03/59064182_6998.jpg" class="card-img-top" alt="service1" height=170>
+              <div class="card-body">
+                <h5 class="card-title mb-3" style="font-weight: 550;">카테고리, 제품<br> 개인화 추천 시스템</h5>
+                <h6>작성한 리뷰데이터를 분석하여<br>맞춤 카테고리 및 제품을<br>추천 해드립니다.</h6>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/recommendation/" role="button" style="background-color: brown; border-color: brown;">서비스 바로가기</a>
+              </div>
+            </article>
+            {% comment %} 로그인을 한 사람일 경우 {% endcomment %}
+            {% if request.user.is_authenticated %}
+            <article class="card my-3 mx-5 p-3 text-center" style="width: 18rem;">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5VBpMndMpGMAX2u-vOgFOjwbUKlHZJn3aTA&usqp=CAU" class="card-img-top" alt="service2" height=170>
+              <div class="card-body">
+                <h5 class="card-title mb-3" style="font-weight: 550;">마이 쿠팡<br> 리뷰 별점 예측 시스템</h5>
+                <h6> 작성한 리뷰를 분석하여<br>어떤 별점에 어울리는지<br>AI가 알려드립니다.</h6>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/mypage/mycoupang/" role="button" style="background-color: brown; border-color: brown;">서비스 바로가기</a>
+              </div>
+            </article>
+            {% endif %}
+            {% comment %} 로그인을 안 한 사람일 경우 {% endcomment %}
+            {% if request.user.is_anonymous %}
+            <article class="card my-3 mx-5 p-3 text-center" style="width: 18rem;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5VBpMndMpGMAX2u-vOgFOjwbUKlHZJn3aTA&usqp=CAU" class="card-img-top" alt="service2" height=170>
+                <div class="card-body">
+                  <h5 class="card-title mb-3" style="font-weight: 550;">리뷰 내용에 따른<br> 별점 자동화 예측 시스템</h5>
+                  <h6> 작성한 리뷰를 분석하여<br>어떤 별점에 어울리는지<br>AI가 알려드립니다.</h6>
+                  <a class="btn btn-primary" href="http://127.0.0.1:8000/mypage/rating_predict/" role="button" style="background-color: brown; border-color: brown;">서비스 바로가기</a>
+                </div>
+              </article>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+</form>
+{% endblock main %}

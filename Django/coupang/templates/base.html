@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./shop.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>ZZINPANG</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+<body>
+    <header class="center">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary justify-content-between">
+            <div class="container-fluid">
+                <a class="navbar-brand mx-auto" href="{% url 'recommendation:mainpage' %}">ZZINPANG</a>
+                
+            </div>
+          </nav>
+          <div class="container" style="background-color: burlywood;">
+          <ul class="nav justify-content-end ml-auto">
+            {% include "base_nav.html" %}
+      
+            {% block content %}{% endblock content %}
+
+        </ul>
+    </div>
+    </header>
+    <div class="container md-4" style="background-color: antiquewhite;">
+        <ul class="nav nav-pills nav-justified ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'recommendation:category' %}" style="color: darkred;">카테고리</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'recommendation:index' %}" style="color: darkred;">추천 카테고리</a>
+            </li>
+            {% comment %} 로그인을 한 사람일 경우 {% endcomment %}
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'mycoupang:mypage' %}" style="color: darkred;">마이 쿠팡</a>
+            </li>
+            {% endif %}
+            {% comment %} 로그인을 안 한 사람일 경우 {% endcomment %}
+            {% if request.user.is_anonymous %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'mycoupang:rating_predict' %}" style="color: darkred;">별점 예측 시스템</a>
+            </li>
+            {% endif %}
+          </ul>
+
+        </div>
+        <div class="container mt-2 justify-content-center">
+          {% block login %}{% endblock login %}
+          {% block signup %}{% endblock signup %}
+          {% block contents %}{% endblock contents %}
+          {% block recommend %}{% endblock recommend %}
+          {% block mypage %}{% endblock mypage %}
+        </div>
+</body>
+
+<footer class="text-center mt-4">
+  <h1 style="font-size: 15px; color: gray;">멀티잇 데이터 분석&엔지니어(Python) 30회차</h1>
+  <h2 style="font-size: 15px; color: gray;">기업요구사항 기반의 문데해결 프로젝트</h2>
+  <h3 style="font-size: 15px; color: gray;">찐빵조(박건원, 정혜원, 김창현, 황서진)</h3>
+
+</footer>
+
+</html>

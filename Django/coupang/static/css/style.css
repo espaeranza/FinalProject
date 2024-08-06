@@ -1,0 +1,79 @@
+
+/* 네비게이션 바 배경색, 폰트, 여백 등 스타일 지정 */
+.navbar {
+    background-color: #be8282; /* 배경색 */
+    font-family: 'Arial', sans-serif; /* 폰트 */
+    padding: 10px 0; /* 위아래 여백 */
+}
+
+.nav-item{
+    margin-right: 20px;
+}
+
+.nav-item.active .nav-link {
+    color: #020202;
+    font-weight: bold;
+}
+
+.navbar-brand {
+    font-weight: bold; /* 로고 텍스트 굵게 */
+    color: #ac5034; /* 로고 텍스트 색상 */
+    font-size: 3rem; /* 로고 텍스트 사이즈 */
+    text-align: center;
+}
+
+
+.navbar-nav .nav-item {
+    border-bottom: 1px solid #ddd; /* 목록 항목들의 하단에 선 추가 */
+    padding: 10px 20px; /* 각 목록 항목의 상하 여백 및 좌우 여백 설정 */
+}
+
+.navbar-nav .nav-link {
+    color: #ed2121; /* 메뉴 항목 텍스트 색상 */
+    font-weight: bold; /* 메뉴 항목 텍스트 굵게 */
+}
+
+/* 폼 요소들의 간격 조정 */
+form {
+    margin-bottom: 20px;
+}
+
+/* 선택 박스 스타일 변경 */
+select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* 제출 버튼 디자인 변경 */
+input[type="submit"] {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 결과 테이블 */
+table {
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+table, td, th {
+    border-collapse : collapse;
+    border : 1px solid black;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+  
